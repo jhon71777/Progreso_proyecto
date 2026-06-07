@@ -1,0 +1,28 @@
+from fastapi import FastAPI
+app = FastAPI()
+@app.get(&quot;/NOMBRE&quot;)
+def inicio():
+return {&quot;mensaje&quot;: &quot;EVcharge&quot;}
+@app.GET(&quot;/proposito&quot;)
+def proposito():
+return {&quot;proposito de la api&quot;: &quot;Es el puente de comunicación que
+conecta los cargadores físicos con la aplicación, permitiendo gestionar
+usuarios, controlar el inicio de la carga y monitorear el consumo de
+energía en tiempo real.&quot;}
+estaciones = {
+{&quot;id&quot;: 1, &quot;ubicación&quot;: &quot;Centro Comercial Norte&quot;, &quot;estado&quot;:
+&quot;Disponible&quot;},
+{&quot;id&quot;: 2, &quot;ubicación&quot;: &quot;Parqueadero Central&quot;, &quot;estado&quot;: &quot;Ocupado&quot;},
+{&quot;id&quot;: 3, &quot;ubicación&quot;: &quot;Parqueadero fontibon&quot;, &quot;estado&quot;:
+&quot;disponible&quot;}
+}
+@app.get(&quot;/estaciones&quot;)
+
+def obtener_usuarios():
+return {}
+@app.get(&quot;/usuarios&quot;)
+def obtener_usuarios():
+return {}
+@app.get(&quot;/recargas&quot;)
+def obtener_recargas():
+return {}
