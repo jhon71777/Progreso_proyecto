@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE — Crear Cuenta</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Changa+One:ital@0;1&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<div class="auth-page" style="display:flex;min-height:100vh;">
+  <div class="auth-box">
+    <h1 class="titulo">Crear Cuenta</h1>
+    <p class="sub">Únete a la red de carga de Colombia</p>
+    
+    <form id="registro-form">
+      <div class="field">
+        <label for="r-nombre">Nombre completo</label>
+        <input type="text" id="r-nombre" placeholder="Tu nombre" required>
+      </div>
+      <div class="field">
+        <label for="r-email">Correo electrónico</label>
+        <input type="email" id="r-email" placeholder="tu@correo.com" required>
+      </div>
+      <div class="field">
+        <label for="r-celular">Número de celular</label>
+        <input type="tel" id="r-celular" placeholder="Ej: 3101234567">
+      </div>
+      <div class="field">
+        <label for="r-pass">Contraseña</label>
+        <input type="password" id="r-pass" placeholder="Mínimo 8 caracteres" required>
+      </div>
+      
+      <button type="submit" class="auth-btn">Registrarse</button>
+    </form>
+    
+    <div class="auth-link">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></div>
+    <a class="back-link" href="index.html">← Volver al inicio</a>
+  </div>
+</div>
+
+<script>
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Función asíncrona para registrar al usuario en la Base de Datos
+async function registerUser(event) {
+  // Evitamos que la página se recargue e interrumpa la petición fetch
+  if (event) event.preventDefault();
+
+  // Validar campos obligatorios en el frontend
+  const nombre = document.getElementById('r-nombre').value.trim();
+  const correo = document.getElementById('r-email').value.trim();
+  const celular = document.getElementById('r-celular').value.trim();
+  const contrasena = document.getElementById('r-pass').value.trim();
+
+  if (!nombre || !correo || !contrasena) {
+    toast('Por favor, completa los campos obligatorios');
+    return;
+  }
+
+  if (contrasena.length < 8) {
+    toast('La contraseña debe tener mínimo 8 caracteres');
+    return;
+  }
+
+  try {
+    // Construimos la URL mapeando exactamente los Query Parameters que pide tu FastAPI
+    let url = `http://127.0.0.1:8000/usuario?nombre=${encodeURIComponent(nombre)}&correo=${encodeURIComponent(correo)}`;
+    
+    // Si el usuario ingresó celular, lo agregamos a la URL
+    if (celular) {
+      url += `&celular=${encodeURIComponent(celular)}`;
+    }
+
+    // Petición POST enviando los parámetros directamente hacia la API y PostgreSQL
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      toast('¡Cuenta creada con éxito! Redirigiendo...');
+      // Redirección controlada tras confirmar inserción en la BD
+      setTimeout(() => location.href = 'login.html', 1500);
+    } else {
+      // Manejo de errores devueltos por FastAPI (ej. Correo duplicado)
+      toast(data.detail || 'Error al registrar el usuario');
+    }
+
+  } catch (error) {
+    console.error('Error de conexión:', error);
+    toast('No se pudo conectar con el servidor de carga. ¿Iniciaste FastAPI?');
+  }
+}
+
+// Vinculación profesional mediante el evento submit del formulario
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('registro-form');
+  if (form) {
+    form.addEventListener('submit', registerUser);
+  }
+});
+</script>
+
+</body>
+</html>

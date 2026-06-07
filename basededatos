@@ -1,0 +1,49 @@
+CREATE DATABASE ev_charge;
+
+
+
+
+
+CREATE TABLE empresas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    nombre_cargador VARCHAR(100)
+);
+
+
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    celular VARCHAR(20)
+);
+
+
+CREATE TABLE vehiculos (
+    id SERIAL PRIMARY KEY,
+    placa VARCHAR(15) UNIQUE NOT NULL,
+    tipo_cargador VARCHAR(50) NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    usuario_id INT NOT NULL, 
+    
+  
+    CONSTRAINT fk_vehiculo_usuario 
+        FOREIGN KEY (usuario_id) 
+        REFERENCES usuarios(id) 
+        ON DELETE CASCADE
+);
+
+
+CREATE TABLE puntos_carga (
+    id SERIAL PRIMARY KEY,
+    direccion VARCHAR(150) NOT NULL,
+    cantidad_cargadores INT NOT NULL DEFAULT 1, 
+    empresa_id INT NOT NULL, 
+    
+
+    CONSTRAINT fk_punto_empresa 
+        FOREIGN KEY (empresa_id) 
+        REFERENCES empresas(id) 
+        ON DELETE CASCADE
+);

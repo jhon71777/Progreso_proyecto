@@ -74,19 +74,13 @@ a {
 }
 
 body {
-    /* Reemplaza 'tu-imagen.jpg' por la ruta de tu archivo */
     background-image: url('https://cdn.prod.website-files.com/5ec85520c4dfff034b036be2/6499cfab126bf75320569b58_Fastest-Charging-EVs_main.webp');
     background-size: cover;
-    /* Cubre toda la pantalla */
     background-position: center;
-    /* Centra la imagen */
     background-attachment: fixed;
-    /* La imagen no se mueve al hacer scroll */
     background-repeat: no-repeat;
     margin: 0;
     font-family: Arial, sans-serif;
-    /* Ajusta a tu preferencia */
-    /* Centra el formulario en pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
