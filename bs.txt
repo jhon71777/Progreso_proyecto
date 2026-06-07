@@ -1,0 +1,49 @@
+CREATE DATABASE ev_charge;
+
+-- 1. Crear la tabla de Empresas (No depende de nadie)
+
+
+
+CREATE TABLE empresas (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    nombre_cargador VARCHAR(100)
+);
+
+-- 2. Crear la tabla de Usuarios (No depende de nadie)
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    celular VARCHAR(20)
+);
+
+-- 3. Crear la tabla de Vehículos (Se relaciona con un Usuario)
+CREATE TABLE vehiculos (
+    id SERIAL PRIMARY KEY,
+    placa VARCHAR(15) UNIQUE NOT NULL,
+    tipo_cargador VARCHAR(50) NOT NULL,
+    marca VARCHAR(50) NOT NULL,
+    usuario_id INT NOT NULL, -- Columna para conectar con el dueño
+    
+    -- Creamos la llave foránea que une esta tabla con la de usuarios
+    CONSTRAINT fk_vehiculo_usuario 
+        FOREIGN KEY (usuario_id) 
+        REFERENCES usuarios(id) 
+        ON DELETE CASCADE
+);
+
+-- 4. Crear la tabla de Puntos de Carga (Se relaciona con una Empresa)
+CREATE TABLE puntos_carga (
+    id SERIAL PRIMARY KEY,
+    direccion VARCHAR(150) NOT NULL,
+    cantidad_cargadores INT NOT NULL DEFAULT 1, -- Tu nueva columna
+    empresa_id INT NOT NULL, -- Columna para conectar con la empresa dueña
+    
+    -- Creamos la llave foránea que une esta tabla con la de empresas
+    CONSTRAINT fk_punto_empresa 
+        FOREIGN KEY (empresa_id) 
+        REFERENCES empresas(id) 
+        ON DELETE CASCADE
+);
