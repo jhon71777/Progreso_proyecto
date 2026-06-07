@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE — Crear Cuenta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<div class="auth-page" style="display:flex;min-height:100vh;">
+  <div class="auth-box">
+    <h1>Crear Cuenta</h1>
+    <p class="sub">Únete a la red de carga de Colombia</p>
+    <div class="field"><label>Nombre completo</label><input type="text" id="r-nombre" placeholder="Tu nombre"></div>
+    <div class="field"><label>Usuario</label><input type="text" id="r-user" placeholder="Crea un usuario"></div>
+    <div class="field"><label>Correo electrónico</label><input type="email" id="r-email" placeholder="tu@correo.com"></div>
+    <div class="field"><label>Contraseña</label><input type="password" id="r-pass" placeholder="Mínimo 8 caracteres"></div>
+    <button class="auth-btn" onclick="registerUser()">Registrarse</button>
+    <div class="auth-link">¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a></div>
+    <a class="back-link" href="index.html">← Volver al inicio</a>
+  </div>
+</div>
+
+<script>
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function registerUser() {
+  const fields = ['r-nombre','r-user','r-email','r-pass'];
+  for (let id of fields) {
+    if (!document.getElementById(id).value.trim()) {
+      toast('Completa todos los campos'); return;
+    }
+  }
+  toast('Cuenta creada. Inicia sesión');
+  setTimeout(() => location.href = 'login.html', 1500);
+}
+</script>
+</body>
+</html>
