@@ -1,0 +1,56 @@
+body{
+    margin: 0;
+    font-family: Arial;
+    background-color: #f4f4f4;
+}
+
+.encabezado{
+    background-color: #1c52a2;
+    color: white;
+    padding: 20px;
+}
+
+.contenedor{
+    padding: 20px;
+}
+
+.menu{
+    width: 250px;
+    background-color: white;
+    border: 2px solid gray;
+    margin-bottom: 20px;
+}
+
+.opcion{
+    padding: 15px;
+}
+
+.opcion p{
+    margin: 0;
+}
+
+.activa{
+    background-color: #1c52a2;
+    color: white;
+}
+
+.salir{
+    color: red;
+}
+
+.linea{
+    height: 1px;
+    background-color: gray;
+}
+
+.panel{
+    margin-top: 20px;
+}
+
+.caja{
+    background-color: white;
+    border: 2px solid gray;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
