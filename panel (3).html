@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE — Panel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<div class="dash-wrap">
+  <header class="dash-header" style="background:#1a1a2e;">
+    <div class="logo">E.V CHARGE <span class="admin-badge">ADMIN</span></div>
+    <div class="user-info">
+      <span style="font-size:13px;color:#aaa;">Panel de Administración</span>
+      <div class="avatar" style="background:var(--red);">A</div>
+    </div>
+  </header>
+
+  <div class="dash-body">
+    <aside class="sidebar">
+      <div class="s-item active" onclick="showAS('resumen',this)">📊 Resumen</div>
+      <div class="s-item" onclick="showAS('usuarios',this)">👥 Usuarios</div>
+      <div class="s-item" onclick="showAS('roles',this)">🎭 Roles</div>
+      <div class="s-item" onclick="showAS('proveedores',this)">🚚 Proveedores</div>
+      <div class="s-item" onclick="showAS('productos',this)">📦 Productos</div>
+      <div class="s-item" onclick="showAS('estaciones',this)">🔌 Estaciones</div>
+      <div class="s-item danger" onclick="location.href='index.html'" style="margin-top:auto;">🚪 Cerrar sesión</div>
+    </aside>
+
+    <main class="dash-main">
+      <div class="d-section active" id="as-resumen">
+        <p class="page-title">Resumen General</p>
+        <div class="kpi-grid">
+          <div class="kpi"><div class="kpi-lbl">Usuarios</div><div class="kpi-val">1,248</div></div>
+          <div class="kpi"><div class="kpi-lbl">Roles</div><div class="kpi-val green">4</div></div>
+          <div class="kpi"><div class="kpi-lbl">Proveedores</div><div class="kpi-val">12</div></div>
+          <div class="kpi"><div class="kpi-lbl">Productos</div><div class="kpi-val amber">8</div></div>
+          <div class="kpi"><div class="kpi-lbl">Estaciones</div><div class="kpi-val">48</div></div>
+        </div>
+        <div class="panel-box">
+          <h3>Actividad reciente</h3>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Usuario</th><th>Acción</th><th>Fecha</th></tr></thead>
+              <tbody>
+                <tr><td>Laura Mendoza</td><td>Recarga en Chapinero</td><td>Hoy 10:30</td></tr>
+                <tr><td>Admin sistema</td><td>Nuevo proveedor</td><td>Hoy 09:15</td></tr>
+                <tr><td>Carlos Díaz</td><td>Rol actualizado</td><td>Ayer 18:20</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-section" id="as-usuarios">
+        <p class="page-title">Gestión de Usuarios</p>
+        <button class="add-btn" onclick="toast('Nuevo usuario')">+ Nuevo usuario</button>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Estado</th><th>Acción</th></tr></thead>
+            <tbody>
+              <tr><td>Laura Mendoza</td><td>lmendoza@ev.com</td><td><span class="pill p-blue">Usuario</span></td><td><span class="pill p-green">Activo</span></td><td><button class="act-btn">Editar</button></td></tr>
+              <tr><td>Andrés Vargas</td><td>avargas@ev.com</td><td><span class="pill p-blue">Usuario</span></td><td><span class="pill p-green">Activo</span></td><td><button class="act-btn">Editar</button></td></tr>
+              <tr><td>Felipe Rojas</td><td>frojas@ev.com</td><td><span class="pill p-purple">Admin</span></td><td><span class="pill p-green">Activo</span></td><td><button class="act-btn">Editar</button></td></tr>
+              <tr><td>Valentina Cruz</td><td>vcruz@ev.com</td><td><span class="pill p-blue">Usuario</span></td><td><span class="pill
