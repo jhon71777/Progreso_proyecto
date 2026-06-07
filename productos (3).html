@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE — Productos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .products-header {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--blue2) 100%);
+      padding: 60px 5%;
+      text-align: center;
+      color: #fff;
+    }
+    .products-header h1 { font-size: 2rem; margin-bottom: 12px; }
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+    }
+    .product-card:hover { transform: translateY(-4px); }
+    .product-icon { font-size: 48px; margin-bottom: 16px; }
+    .product-card h3 { font-size: 18px; margin-bottom: 12px; color: var(--blue); }
+    .product-price { font-size: 24px; font-weight: 800; color: var(--red); margin: 16px 0; }
+    .product-desc { color: var(--gray); font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+<a class="wa-float" href="https://wa.me/573014649387" target="_blank" title="WhatsApp">WA</a>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-logo" onclick="location.href='index.html'" style="cursor:pointer;">
+    <img src="https://chargeguru.com/es/wp-content/uploads/sites/2/revslider/guide-dutilisation-1/1-voiture.png" alt="logo">
+    <span>E.V CHARGE</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html#servicios">Servicios</a>
+    <a href="nosotros.html">Quiénes somos</a>
+    <a href="productos.html" style="color:#fff;font-weight:700;">Productos</a>
+    <a href="login-admin.html" style="color:#f87171;font-size:12px;">Admin</a>
+  </div>
+  <a href="login.html"><button class="nav-btn">Iniciar Sesión</button></a>
+</nav>
+
+<div class="products-header">
+  <h1  class="titulo">Nuestros Productos</h1>
+  <p>Soluciones de carga para cada necesidad</p>
+</div>
+
+<section class="section">
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">⚡</div>
+      <h3>Cargador Rápido DC 150kW</h3>
+      <div class="product-price">$45,000 COP/hora</div>
+      <p class="product-desc">Carga ultra rápida para vehículos compatibles. Del 20% al 80% en 30 minutos.</p>
+      <button class="btn-red" onclick="toast('Solicita información')">Más información</button>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🔌</div>
+      <h3>Cargador Wallbox 22kW</h3>
+      <div class="product-price">$1,200,000 COP</div>
+      <p class="product-desc">Ideal para hogares y oficinas. Instalación incluida.</p>
+      <button class="btn-red" onclick="toast('Solicita información')">Comprar ahora</button>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">📱</div>
+      <h3>Suscripción Premium</h3>
+      <div class="product-price">$49,900 COP/mes</div>
+      <p class="product-desc">Acceso ilimitado a toda la red, descuentos y prioridad en estaciones concurridas.</p>
+      <button class="btn-red" onclick="toast('Solicita información')">Suscribirme</button>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🏢</div>
+      <h3>Solución Empresarial</h3>
+      <div class="product-price">Cotizar</div>
+      <p class="product-desc">Instalación de flota completa para empresas. Gestión centralizada.</p>
+      <button class="btn-red" onclick="toast('Solicita información')">Cotizar ahora</button>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 E.V CHARGE · Bogotá, Colombia.</footer>
+
+<script>
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    if (window.scrollY > 10) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+});
+</script>
+</body>
+</html>
