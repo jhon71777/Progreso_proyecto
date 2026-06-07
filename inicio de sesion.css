@@ -1,0 +1,94 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    width: 350px;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #1e90ff;
+    text-align: center;
+}
+
+h1 {
+    color: #1e90ff;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+.olvide {
+    margin-top: 10px;
+    margin-left: 12px;
+    color: #1e90ff;
+    font-size: 14px;
+    text-align: left;
+}
+
+button {
+    width: 95%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0f70d1;
+}
+
+.registro {
+    margin-top: 15px;
+    color: #333;
+}
+
+.registro span {
+    color: #1e90ff;
+    font-weight: bold;
+}
+
+a {
+    color: #1e90ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+body {
+    /* Reemplaza 'tu-imagen.jpg' por la ruta de tu archivo */
+    background-image: url('https://cdn.prod.website-files.com/5ec85520c4dfff034b036be2/6499cfab126bf75320569b58_Fastest-Charging-EVs_main.webp');
+    background-size: cover;
+    /* Cubre toda la pantalla */
+    background-position: center;
+    /* Centra la imagen */
+    background-attachment: fixed;
+    /* La imagen no se mueve al hacer scroll */
+    background-repeat: no-repeat;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* Ajusta a tu preferencia */
+    /* Centra el formulario en pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
