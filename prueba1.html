@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="prueba1.css">
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- =========== LANDING =========== -->
+<div class="view active" id="landing">
+  <nav class="nav">
+    <div class="nav-logo" onclick="showView('landing')">
+      <img src="https://chargeguru.com/es/wp-content/uploads/sites/2/revslider/guide-dutilisation-1/1-voiture.png" alt="logo">
+      <span>E.V CHARGE</span>
+    </div>
+    <div class="nav-links">
+      <a onclick="scrollTo2('servicios')">Servicios</a>
+      <a onclick="scrollTo2('contacto')">¿Quiénes somos?</a>
+      <a onclick="showView('login-admin')" style="color:#f87171;font-size:12px;">Admin</a>
+    </div>
+    <button class="nav-btn" onclick="showView('login')">Iniciar Sesión</button>
+  </nav>
+
+  <section class="hero">
+    <div>
+      <h1>Energía a la altura<br>de tu <span>ingeniería.</span></h1>
+      <p>Encuentra los puntos de carga más rápidos para tu vehículo eléctrico en Bogotá, en segundos.</p>
+      <div class="hero-btns">
+        <button class="btn-red" onclick="showView('login')">Ubicar ahora</button>
+        <button class="btn-white" onclick="scrollTo2('servicios')">Ver servicios</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="stat-item"><div class="num">48+</div><div class="lbl">Cargadores activos</div></div>
+    <div class="stat-item"><div class="num">12k</div><div class="lbl">Recargas este mes</div></div>
+    <div class="stat-item"><div class="num">99%</div><div class="lbl">Disponibilidad</div></div>
+    <div class="stat-item"><div class="num">24/7</div><div class="lbl">Soporte</div></div>
+  </div>
+
+  <section class="section" id="servicios">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <p class="section-sub">Todo lo que necesitas para cargar tu EV en Bogotá</p>
+    <div class="cards-grid">
+      <div class="service-card"><div class="icon">⚡</div><h3>Carga Rápida DC</h3><p>Estaciones de hasta 150 kW. Del 20% al 80% en menos de 30 minutos.</p></div>
+      <div class="service-card"><div class="icon">📍</div><h3>Localización en tiempo real</h3><p>Consulta disponibilidad y navega directamente al punto más cercano.</p></div>
+      <div class="service-card"><div class="icon">🛣️</div><h3>Planificador de rutas</h3><p>Calcula rutas con paradas de carga según la autonomía de tu vehículo.</p></div>
+      <div class="service-card"><div class="icon">🔌</div><h3>Multi-conector</h3><p>Compatible con CCS Combo, Tipo 1, Tipo 2 y CHAdeMO.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="contacto" style="background:#fff;border-top:1px solid var(--border);">
+    <h2 class="section-title">¿Quiénes somos?</h2>
+    <p class="section-sub">La plataforma líder de carga eléctrica en Bogotá. Conectamos conductores con la red más amplia de Colombia.</p>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="ico">📍</div><p>Bogotá, Colombia</p></div>
+      <div class="contact-card"><div class="ico">📧</div><a href="mailto:Stivenaria14@gmail.com">Stivenaria14@gmail.com</a></div>
+      <div class="contact-card"><div class="ico">📞</div><p>+57 301 464 9387</p></div>
+      <div class="contact-card"><div class="ico">💬</div><a href="https://wa.me/573014649387" target="_blank">WhatsApp</a></div>
+    </div>
+    <div style="margin-top:28px;">
+      <button class="btn-red" onclick="showView('contacto')">Envíanos un mensaje</button>
+    </div>
+  </section>
+
+  <footer>&copy; 2026 E.V CHARGE · Bogotá, Colombia. Todos los derechos reservados.</footer>
+</div>
+
+<!-- =========== LOGIN =========== -->
+<div class="view auth-page" id="login">
+  <div class="auth-box">
+    <h1>Iniciar Sesión</h1>
+    <p class="sub">Bienvenido de nuevo a E.V CHARGE</p>
+    <div class="field"><label>Usuario</label><input type="text" placeholder="Ingresa tu usuario"></div>
+    <div class="field"><label>Contraseña</label><input type="password" placeholder="••••••••"></div>
+    <p style="font-size:13px;color:var(--blue2);cursor:pointer;margin-bottom:8px;">¿Olvidaste tu contraseña?</p>
+    <button class="auth-btn" onclick="loginUser()">Ingresar</button>
+    <div class="auth-link">¿No tienes cuenta? <a onclick="showView('registro')">Regístrate</a></div>
+    <a class="back-link" onclick="showView('landing')">← Volver al inicio</a>
+  </div>
+</div>
+
+<!-- =========== REGISTRO =========== -->
+<div class="view auth-page" id="registro">
+  <div class="auth-box">
+    <h1>Crear Cuenta</h1>
+    <p class="sub">Únete a la red de carga de Colombia</p>
+    <div class="field"><label>Nombre completo</label><input type="text" placeholder="Tu nombre"></div>
+    <div class="field"><label>Usuario</label><input type="text" placeholder="Crea un usuario"></div>
+    <div class="field"><label>Correo electrónico</label><input type="email" placeholder="tu@correo.com"></div>
+    <div class="field"><label>Contraseña</label><input type="password" placeholder="Mínimo 8 caracteres"></div>
+    <button class="auth-btn" onclick="registerUser()">Registrarse</button>
+    <div class="auth-link">¿Ya tienes cuenta? <a onclick="showView('login')">Inicia sesión</a></div>
+    <a class="back-link" onclick="showView('landing')">← Volver al inicio</a>
+  </div>
+</div>
+
+<!-- =========== CONTACTO =========== -->
+<div class="view auth-page" id="contacto">
+  <div class="auth-box" style="max-width:420px;">
+    <h1>Contáctanos</h1>
+    <p class="sub">Estamos aquí para ayudarte</p>
+    <div class="field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+    <div class="field"><label>Mensaje</label><textarea placeholder="Escribe tu problema o sugerencia..."></textarea></div>
+    <button class="auth-btn" onclick="sendContact()">Enviar mensaje</button>
+    <div class="contact-info-box">
+      <p>📍 Bogotá, Colombia</p>
+      <p>📧 Stivenaria14@gmail.com</p>
+      <p>📞 +57 301 464 9387</p>
+      <a class="wa-btn" href="https://wa.me/573014649387" target="_blank">💬 WhatsApp</a>
+    </div>
+    <a class="back-link" onclick="showView('landing')">← Volver al inicio</a>
+  </div>
+</div>
+
+<!-- =========== DASHBOARD USUARIO =========== -->
+<div class="view" id="dash-user">
+  <div class="dash-wrap">
+    <header class="dash-header">
+      <div class="logo">
+        <img src="https://chargeguru.com/es/wp-content/uploads/sites/2/revslider/guide-dutilisation-1/1-voiture.png" alt="">
+        E.V CHARGE
+      </div>
+      <div class="user-info">
+        <span>Juan Sánchez</span>
+        <div class="avatar">JS</div>
+      </div>
+    </header>
+    <div class="dash-body">
+      <aside class="sidebar">
+        <div class="s-item active" onclick="showDS('inicio',this)"><span class="s-icon">🏠</span> Inicio</div>
+        <div class="s-item" onclick="showDS('cargadores',this)"><span class="s-icon">⚡</span> Cargadores</div>
+        <div class="s-item" onclick="showDS('favoritos',this)"><span class="s-icon">⭐</span> Favoritos</div>
+        <div class="s-item" onclick="showDS('ruta',this)"><span class="s-icon">🛣️</span> Planificar ruta</div>
+        <div class="s-item" onclick="showDS('vehiculo',this)"><span class="s-icon">🚗</span> Mi vehículo</div>
+        <div class="s-item" onclick="showDS('perfil',this)"><span class="s-icon">👤</span> Mi perfil</div>
+        <div class="s-item danger" onclick="logout()" style="margin-top:160px;"><span class="s-icon">🚪</span> Cerrar sesión</div>
+      </aside>
+
+      <main class="dash-main">
+
+        <!-- INICIO -->
+        <div class="d-section active" id="ds-inicio">
+          <p class="page-title">Bienvenido, Juan ⚡</p>
+          <p class="page-sub">Resumen de tu actividad</p>
+          <div class="kpi-grid">
+            <div class="kpi"><div class="kpi-lbl">Recargas este mes</div><div class="kpi-val">8</div></div>
+            <div class="kpi"><div class="kpi-lbl">kWh consumidos</div><div class="kpi-val">142</div></div>
+            <div class="kpi"><div class="kpi-lbl">Ahorro estimado</div><div class="kpi-val green">$48k</div></div>
+            <div class="kpi"><div class="kpi-lbl">Favoritos</div><div class="kpi-val amber">3</div></div>
+          </div>
+          <div class="panel-box">
+            <h3>Cargadores cercanos</h3>
+            <div class="charger-list">
+              <div class="charger-row"><div class="c-dot on"></div><div class="c-info"><div class="c-name">Chapinero Norte</div><div class="c-addr">Cra 7 #53-20</div></div><div class="c-kw">150 kW</div><div class="c-badge on">Disponible</div></div>
+              <div class="charger-row"><div class="c-dot busy"></div><div class="c-info"><div class="c-name">EV Point Usaquén</div><div class="c-addr">Cll 116 #15-08</div></div><div class="c-kw">50 kW</div><div class="c-badge busy">Ocupado</div></div>
+              <div class="charger-row"><div class="c-dot on"></div><div class="c-info"><div class="c-name">CC Andino</div><div class="c-addr">Cra 11 #82-01</div></div><div class="c-kw">22 kW</div><div class="c-badge on">Disponible</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARGADORES -->
+        <div class="d-section" id="ds-cargadores">
+          <p class="page-title">Cargadores en Bogotá ⚡</p>
+          <p class="page-sub">Red completa de puntos de carga</p>
+          <div style="display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;">
+            <button class="act-btn" onclick="filterC('all')" style="border-color:var(--blue);color:var(--blue);">Todos</button>
+            <button class="act-btn" onclick="filterC('on')">Disponibles</button>
+            <button class="act-btn" onclick="filterC('busy')">Ocupados</button>
+            <button class="act-btn" onclick="filterC('off')">Fuera de servicio</button>
+          </div>
+          <div class="charger-list" id="clist">
+            <div class="charger-row" data-s="on"><div class="c-dot on"></div><div class="c-info"><div class="c-name">Chapinero Norte</div><div class="c-addr">Cra 7 #53-20 · CCS Combo · 150 kW DC</div></div><div class="c-kw">150 kW</div><div class="c-badge on">Disponible</div><button class="fav-btn" onclick="addFav('Chapinero Norte','Cra 7 #53-20','on','150 kW',this)" title="Agregar a favoritos">☆</button></div>
+            <div class="charger-row" data-s="busy"><div class="c-dot busy"></div><div class="c-info"><div class="c-name">EV Point Usaquén</div><div class="c-addr">Cll 116 #15-08 · Tipo 2 · 50 kW DC</div></div><div class="c-kw">50 kW</div><div class="c-badge busy">Ocupado</div><button class="fav-btn" onclick="addFav('EV Point Usaquén','Cll 116 #15-08','busy','50 kW',this)" title="Agregar a favoritos">☆</button></div>
+            <div class="charger-row" data-s="on"><div class="c-dot on"></div><div class="c-info"><div class="c-name">CC Andino</div><div class="c-addr">Cra 11 #82-01 · Tipo 2 · 22 kW AC</div></div><div class="c-kw">22 kW</div><div class="c-badge on">Disponible</div><button class="fav-btn" onclick="addFav('CC Andino','Cra 11 #82-01','on','22 kW',this)" title="Agregar a favoritos">☆</button></div>
+            <div class="charger-row" data-s="on"><div class="c-dot on"></div><div class="c-info"><div class="c-name">Portal El Dorado</div><div class="c-addr">Av El Dorado #100-19 · CHAdeMO · 50 kW</div></div><div class="c-kw">50 kW</div><div class="c-badge on">Disponible</div><button class="fav-btn" onclick="addFav('Portal El Dorado','Av El Dorado #100-19','on','50 kW',this)" title="Agregar a favoritos">☆</button></div>
+            <div class="charger-row" data-s="off"><div class="c-dot off"></div><div class="c-info"><div class="c-name">Estación Suba Centro</div><div class="c-addr">Cll 145 #91-19 · CCS Combo · 100 kW</div></div><div class="c-kw">100 kW</div><div class="c-badge off">Sin servicio</div><button class="fav-btn" onclick="addFav('Estación Suba Centro','Cll 145 #91-19','off','100 kW',this)" title="Agregar a favoritos">☆</button></div>
+            <div class="charger-row" data-s="busy"><div class="c-dot busy"></div><div class="c-info"><div class="c-name">CC Gran Estación</div><div class="c-addr">Av Cll 26 #62-47 · Tipo 1 · 22 kW AC</div></div><div class="c-kw">22 kW</div><div class="c-badge busy">Ocupado</div><button class="fav-btn" onclick="addFav('CC Gran Estación','Av Cll 26 #62-47','busy','22 kW',this)" title="Agregar a favoritos">☆</button></div>
+            <div class="charger-row" data-s="on"><div class="c-dot on"></div><div class="c-info"><div class="c-name">Parque 93</div><div class="c-addr">Cll 93 #11A-28 · CCS Combo · 150 kW</div></div><div class="c-kw">150 kW</div><div class="c-badge on">Disponible</div><button class="fav-btn" onclick="addFav('Parque 93','Cll 93 #11A-28','on','150 kW',this)" title="Agregar a favoritos">☆</button></div>
+            <div class="charger-row" data-s="on"><div class="c-dot on"></div><div class="c-info"><div class="c-name">Autopista Norte Km 10</div><div class="c-addr">Autopista Norte #187-02 · CCS · 120 kW</div></div><div class="c-kw">120 kW</div><div class="c-badge on">Disponible</div><button class="fav-btn" onclick="addFav('Autopista Norte Km 10','Autopista Norte #187-02','on','120 kW',this)" title="Agregar a favoritos">☆</button></div>
+          </div>
+          <a href="https://www.google.com/maps/search/estaciones+carga+electrica+bogota" target="_blank" style="display:inline-block;margin-top:14px;font-size:13px;color:var(--blue2);">📍 Ver en Google Maps →</a>
+        </div>
+
+        <!-- FAVORITOS -->
+        <div class="d-section" id="ds-favoritos">
+          <p class="page-title">Cargadores Favoritos ⭐</p>
+          <p class="page-sub">Tus estaciones guardadas. Presiona ☆ en la lista de cargadores para agregar.</p>
+          <div class="charger-list" id="fav-list">
+            <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:32px;text-align:center;color:var(--gray2);" id="fav-empty">
+              <div style="font-size:32px;margin-bottom:8px;">⭐</div>
+              <p style="font-size:14px;">Aún no tienes favoritos.<br>Ve a <strong>Cargadores</strong> y presiona ☆ para guardar.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- RUTA -->
+        <div class="d-section" id="ds-ruta">
+          <p class="page-title">Planificar Ruta 🛣️</p>
+          <p class="page-sub">Calcula paradas de carga para tu viaje</p>
+          <div class="panel-box">
+            <h3>Datos del viaje</h3>
+            <div class="form-grid">
+              <div class="field"><label>Origen</label><input type="text" id="r-origen" placeholder="Ej: Chapinero"></div>
+              <div class="field"><label>Destino</label><input type="text" id="r-destino" placeholder="Ej: Usaquén"></div>
+              <div class="field"><label>Batería actual (%)</label><input type="number" id="r-bat" placeholder="80" min="1" max="100"></div>
+              <div class="field"><label>Vehículo</label>
+                <select id="r-modelo">
+                  <option>Tesla Model 3 (570 km)</option>
+                  <option>BYD Seal (570 km)</option>
+                  <option>Chevrolet Bolt (417 km)</option>
+                  <option>Nissan Leaf (270 km)</option>
+                  <option>Renault Zoe (385 km)</option>
+                </select>
+              </div>
+            </div>
+            <button class="save-btn" onclick="calcRoute()">Calcular</button>
+            <div class="route-result" id="route-result">
+              <h4>🗺️ Resultado</h4>
+              <div class="r-row"><span>Distancia</span><span id="r-dist"></span></div>
+              <div class="r-row"><span>Tiempo de conducción</span><span id="r-time"></span></div>
+              <div class="r-row"><span>Paradas de carga</span><span id="r-stops"></span></div>
+              <div class="r-row"><span>Tiempo de carga</span><span id="r-charge"></span></div>
+              <div class="r-row"><span>Tiempo total</span><span id="r-total"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MI VEHÍCULO -->
+        <div class="d-section" id="ds-vehiculo">
+          <p class="page-title">Mi Vehículo 🚗</p>
+          <p class="page-sub">Datos de tu EV registrado</p>
+          <div class="panel-box">
+            <h3>Información del vehículo</h3>
+            <div class="form-grid">
+              <div class="field"><label>Marca</label><input type="text" value="Tesla"></div>
+              <div class="field"><label>Modelo</label><input type="text" value="Model 3"></div>
+              <div class="field"><label>Placa</label><input type="text" value="EVC 456"></div>
+              <div class="field"><label>Tipo de conector</label>
+                <select><option>CCS Combo</option><option>Tipo 1</option><option>Tipo 2</option><option>CHAdeMO</option></select>
+              </div>
+              <div class="field"><label>Capacidad (kWh)</label><input type="number" value="82"></div>
+              <div class="field"><label>Autonomía (km)</label><input type="number" value="570"></div>
+            </div>
+            <button class="save-btn" onclick="toast('Vehículo actualizado ✓')">Guardar cambios</button>
+          </div>
+        </div>
+
+        <!-- MI PERFIL -->
+        <div class="d-section" id="ds-perfil">
+          <p class="page-title">Mi Perfil 👤</p>
+          <p class="page-sub">Información de tu cuenta</p>
+          <div class="panel-box">
+            <div class="prof-header">
+              <div class="prof-avatar">JS</div>
+              <div>
+                <div style="font-size:16px;font-weight:800;">Juan Sánchez</div>
+                <div style="font-size:13px;color:var(--gray);">usuario@evcharge.com</div>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field"><label>Nombre completo</label><input type="text" value="Juan Sánchez"></div>
+              <div class="field"><label>Usuario</label><input type="text" value="juansanchez"></div>
+              <div class="field"><label>Correo</label><input type="email" value="usuario@evcharge.com"></div>
+              <div class="field"><label>Teléfono</label><input type="text" value="+57 300 000 0000"></div>
+            </div>
+            <button class="save-btn" onclick="toast('Perfil actualizado ✓')">Guardar cambios</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- =========== LOGIN ADMIN =========== -->
+<div class="view auth-page" id="login-admin">
+  <div class="auth-box">
+    <h1 style="color:var(--red);">Panel Admin</h1>
+    <p class="sub">Acceso restringido — E.V CHARGE</p>
+    <div class="field"><label>Usuario</label><input type="text" placeholder="admin"></div>
+    <div class="field"><label>Contraseña</label><input type="password" placeholder="••••••••"></div>
+    <button class="auth-btn" style="background:var(--red);" onclick="loginAdmin()">Acceder</button>
+    <a class="back-link" onclick="showView('landing')">← Volver al inicio</a>
+  </div>
+</div>
+
+<!-- =========== DASHBOARD ADMIN =========== -->
+<div class="view" id="dash-admin">
+  <div class="dash-wrap">
+    <header class="dash-header" style="background:#1a1a2e;">
+      <div class="logo">E.V CHARGE <span class="admin-badge">ADMIN</span></div>
+      <div class="user-info"><span style="font-size:13px;color:#aaa;">Panel de Administración</span><div class="avatar" style="background:var(--red);">A</div></div>
+    </header>
+    <div class="dash-body">
+      <aside class="sidebar">
+        <div class="s-item active" onclick="showAS('resumen',this)"><span class="s-icon">📊</span> Resumen</div>
+        <div class="s-item" onclick="showAS('usuarios',this)"><span class="s-icon">👥</span> Usuarios</div>
+        <div class="s-item" onclick="showAS('estaciones',this)"><span class="s-icon">⚡</span> Estaciones</div>
+        <div class="s-item" onclick="showAS('vehiculos',this)"><span class="s-icon">🚗</span> Vehículos</div>
+        <div class="s-item" onclick="showAS('reportes',this)"><span class="s-icon">📈</span> Reportes</div>
+        <div class="s-item danger" onclick="logout()" style="margin-top:160px;"><span class="s-icon">🚪</span> Cerrar sesión</div>
+      </aside>
+
+      <main class="dash-main">
+        <!-- RESUMEN -->
+        <div class="d-section active" id="as-resumen">
+          <p class="page-title">Resumen General 📊</p>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
