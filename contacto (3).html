@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE — Contacto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+<a class="wa-float" href="https://wa.me/573014649387" target="_blank" title="WhatsApp">WA</a>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-logo" onclick="location.href='index.html'" style="cursor:pointer;">
+    <img src="https://chargeguru.com/es/wp-content/uploads/sites/2/revslider/guide-dutilisation-1/1-voiture.png" alt="logo">
+    <span>E.V CHARGE</span>
+  </div>
+  <div class="nav-links">
+    <a href="index.html#servicios">Servicios</a>
+    <a href="nosotros.html">Quiénes somos</a>
+    <a href="productos.html">Productos</a>
+    <a href="login-admin.html" style="color:#f87171;font-size:12px;">Admin</a>
+  </div>
+  <a href="login.html"><button class="nav-btn">Iniciar Sesión</button></a>
+</nav>
+
+<div class="auth-page" style="display:flex;min-height:calc(100vh - 68px);">
+  <div class="auth-box" style="max-width:480px;">
+    <h1>Contáctanos</h1>
+    <p class="sub">Estamos aquí para ayudarte</p>
+
+    <div class="field"><label>Nombre</label><input type="text" id="c-nombre" placeholder="Tu nombre"></div>
+    <div class="field"><label>Correo electrónico</label><input type="email" id="c-email" placeholder="tu@correo.com"></div>
+    <div class="field"><label>Asunto</label>
+      <select id="c-asunto">
+        <option>Soporte técnico</option>
+        <option>Información sobre servicios</option>
+        <option>Facturación</option>
+        <option>Alianzas comerciales</option>
+        <option>Otro</option>
+      </select>
+    </div>
+    <div class="field"><label>Mensaje</label><textarea id="c-mensaje" placeholder="Escribe tu mensaje..." rows="4"></textarea></div>
+
+    <button class="auth-btn" onclick="sendContact()">Enviar mensaje</button>
+
+    <div class="contact-info-box">
+      <p>📍 Bogotá, Colombia</p>
+      <p>✉️ Stivenaria14@gmail.com</p>
+      <p>📞 +57 301 464 9387</p>
+      <a class="wa-btn" href="https://wa.me/573014649387" target="_blank">💬 WhatsApp</a>
+    </div>
+
+    <a class="back-link" href="index.html">← Volver al inicio</a>
+  </div>
+</div>
+
+<footer>&copy; 2026 E.V CHARGE · Bogotá, Colombia.</footer>
+
+<script>
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+function sendContact() {
+  const n = document.getElementById('c-nombre').value.trim();
+  const e = document.getElementById('c-email').value.trim();
+  const m = document.getElementById('c-mensaje').value.trim();
+  if (!n || !e || !m) { toast('Completa todos los campos'); return; }
+  toast('Mensaje enviado');
+  setTimeout(() => location.href = 'index.html', 1800);
+}
+
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    if (window.scrollY > 10) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+});
+</script>
+</body>
+</html>

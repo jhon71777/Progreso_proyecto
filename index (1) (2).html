@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE — Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+<a class="wa-float" href="https://wa.me/573014649387" target="_blank" title="WhatsApp">WA</a>
+
+<nav class="nav" id="main-nav">
+  <div class="nav-logo" onclick="location.href='index.html'" style="cursor:pointer;">
+    <img src="https://chargeguru.com/es/wp-content/uploads/sites/2/revslider/guide-dutilisation-1/1-voiture.png" alt="logo">
+    <span>E.V CHARGE</span>
+  </div>
+  <div class="nav-links">
+    <a href="#servicios">Servicios</a>
+    <a href="nosotros.html">Quiénes somos</a>
+    <a href="productos.html">Productos</a>
+    <a href="login-admin.html" style="color:#f87171;font-size:12px;">Admin</a>
+  </div>
+  <a href="login.html"><button class="nav-btn">Iniciar Sesión</button></a>
+</nav>
+
+<section class="hero">
+  <div>
+    <h1>Energía a la altura<br>de tu <span>ingeniería.</span></h1>
+    <p>Encuentra los puntos de carga más rápidos para tu vehículo eléctrico en Bogotá.</p>
+    <div class="hero-btns">
+      <a href="login.html"><button class="btn-red">Ubicar ahora</button></a>
+      <a href="#servicios"><button class="btn-white">Ver servicios</button></a>
+    </div>
+  </div>
+  <div class="hero-badge-abs">Red activa 24/7</div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="num">48+</div><div class="lbl">Cargadores activos</div></div>
+  <div class="stat-item"><div class="num">12k</div><div class="lbl">Recargas este mes</div></div>
+  <div class="stat-item"><div class="num">99%</div><div class="lbl">Disponibilidad</div></div>
+  <div class="stat-item"><div class="num">24/7</div><div class="lbl">Soporte</div></div>
+</div>
+
+<section class="section" id="servicios">
+  <h2 class="section-title">Nuestros Servicios</h2>
+  <p class="section-sub">Todo lo que necesitas para cargar tu EV en Bogotá</p>
+  <div class="cards-grid">
+    <div class="service-card">
+      <div class="icon">⚡</div>
+      <h3>Carga Rápida DC</h3>
+      <p>Estaciones de hasta 150 kW. Del 20% al 80% en menos de 30 minutos.</p>
+      <span class="card-tag">Popular</span>
+    </div>
+    <div class="service-card">
+      <div class="icon">🗺️</div>
+      <h3>Localización en tiempo real</h3>
+      <p>Consulta disponibilidad y navega directamente al punto más cercano.</p>
+    </div>
+    <div class="service-card">
+      <div class="icon">📍</div>
+      <h3>Planificador de rutas</h3>
+      <p>Calcula rutas con paradas de carga según la autonomía de tu vehículo.</p>
+      <span class="card-tag" style="background:var(--blue2);">Nuevo</span>
+    </div>
+    <div class="service-card">
+      <div class="icon">🔌</div>
+      <h3>Multi-conector</h3>
+      <p>Compatible con CCS Combo, Tipo 1, Tipo 2 y CHAdeMO.</p>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; 2026 E.V CHARGE · Bogotá, Colombia.</footer>
+
+<script>
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('main-nav');
+  if (nav) {
+    if (window.scrollY > 10) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  }
+});
+</script>
+</body>
+</html>
