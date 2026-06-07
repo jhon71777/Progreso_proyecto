@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E.V CHARGE — Iniciar Sesión</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Changa+One:ital@0;1&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="estilo.css">
+  
+  <style>
+    /* Aplicando explícitamente tus fuentes especiales si no se heredan en estilo.css */
+    .titulo {
+      font-family: 'Changa One', sans-serif;
+    }
+    .sub {
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem; /* Ajuste para destacar el estilo manuscrito de Caveat */
+    }
+  </style>
+</head>
+<body>
+
+<div class="toast" id="toast"></div>
+
+<div class="auth-page" style="display:flex;min-height:100vh;">
+  <div class="auth-box">
+    <h1 class="titulo" style="color:var(--red);">Panel Admin</h1>
+    <p class="sub">Acceso restringido — E.V CHARGE</p>
+    
+    <form id="login-form">
+      <div class="field">
+        <label for="l-email">Correo / Usuario</label>
+        <input type="text" id="l-email" placeholder="admin" required>
+      </div>
+      <div class="field">
+        <label for="l-pass">Contraseña</label>
+        <input type="password" id="l-pass" placeholder="••••••••" required>
+      </div>
+      
+      <button type="submit" class="auth-btn" style="background:var(--red);">Acceder</button>
+    </form>
+    
+    <div class="auth-link" style="margin-top: 15px; font-size: 14px;">
+      ¿No tienes cuenta? <a href="registro.html" style="color:var(--blue); font-weight:700;">Regístrate aquí</a>
+    </div>
+    <a class="back-link" href="index.html">← Volver al inicio</a>
+  </div>
+</div>
+
+<script>
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+// Función asíncrona para validar credenciales locales o de base de datos
+async function procesarLogin(event) {
+  // Evitamos que la página se recargue e interrumpa el flujo del script
+  if (event) event.preventDefault();
+
+  const correo_o_user = document.getElementById('l-email').value.trim();
+  const contrasena = document.getElementById('l-pass').value.trim();
+
+  // 1. Verificación rápida local para la cuenta raíz del administrador de la app
+  if (correo_o_user === 'admin' && contrasena === 'admin') {
+    toast('Acceso concedido como Administrador...');
+    setTimeout(() => location.href = 'panel.html', 1200);
+    return;
+  }
+
+  // 2. Conexión opcional con FastAPI para buscar usuarios estándar en PostgreSQL
+  try {
+    const url = `http://127.0.0.1:8000/login?correo=${encodeURIComponent(correo_o_user)}&contrasena=${encodeURIComponent(contrasena)}`;
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      toast(`¡Bienvenido, ${data.usuario.nombre}!`);
+      // Almacenamos la sesión en el navegador
+      sessionStorage.setItem('usuario_conectado', JSON.stringify(data.usuario));
+      setTimeout(() => location.href = 'index.html', 1500);
+    } else {
+      toast(data.detail || 'Credenciales incorrectas');
+    }
+
+  } catch (error) {
+    console.error('Error de comunicación con la API:', error);
+    // Si la API no está corriendo, al menos notificamos que falló el inicio fuera de admin/admin
+    toast('Credenciales incorrectas o servidor desconectado');
+  }
+}
+
+// Vinculación controlada del formulario cuando el documento esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('login-form');
+  if (form) {
+    form.addEventListener('submit', procesarLogin);
+  }
+});
+</script>
+</body>
+</html>
